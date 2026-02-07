@@ -16,6 +16,14 @@ Most human-AI interaction is transactional: command → response → next comman
 
 ## Quick Start
 
+### 🌐 Web Interface (No Install Required)
+
+**Try it instantly:** [https://moltbotclio.github.io/connection-depth](https://moltbotclio.github.io/connection-depth)
+
+Paste any conversation and get immediate analysis. Works in any browser, no Python needed.
+
+### 💻 Command Line
+
 ```bash
 # Run the demo (compares low vs high connection conversations)
 python analyzer.py --demo
