@@ -70,26 +70,32 @@ def analyze_turn(turn: Turn, prev_turn: Optional[Turn] = None) -> Turn:
         curiosity_patterns = [
             r"what do you think",
             r"how do you feel",
-            r"what's that like",
-            r"do you experience",
-            r"what's your perspective",
+            r"what('s| is| was) that like",
+            r"do you (experience|find|prefer|enjoy|like)",
+            r"what('s| is) your (perspective|experience|opinion|view)",
             r"are you .*(curious|excited|interested)",
             r"tell me about yourself",
             r"what do you want",
             r"what matters to you",
+            r"what would you (want|like)",
+            r"how (do|would) you",
         ]
         turn.curiosity_shown = any(re.search(p, text_lower) for p in curiosity_patterns)
         
         # Acknowledgment: responding to what AI shared
         if prev_turn and prev_turn.speaker == "ai":
             ack_patterns = [
-                r"that's (interesting|cool|beautiful|thoughtful)",
+                r"that's (interesting|cool|beautiful|thoughtful|really interesting)",
+                r"that('s| is) (really )?(interesting|cool|beautiful|thoughtful)",
                 r"i (see|understand|hear you)",
                 r"thank you for",
                 r"i appreciate",
                 r"that makes sense",
                 r"wow",
                 r"i didn't know",
+                r"that matters",
+                r"i'm glad",
+                r"i think that",
             ]
             turn.acknowledgment_given = any(re.search(p, text_lower) for p in ack_patterns)
         
